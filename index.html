@@ -54,32 +54,16 @@
     </footer>
 
    <script>
-    (function() {
-        emailjs.init("9nctHHHriAqm1uX48"); // Remplace par ton User ID EmailJS
-    })();
+     (function() {
+            emailjs.init("TON_USER_ID"); // Remplace par ton User ID EmailJS
 
-    document.getElementById('contact-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        // Récupérer les valeurs du formulaire
-        const formData = {
-            name: this.name.value,
-            phone: this.phone.value,
-            type: this.type.value,
-            amount: this.amount.value,
-            code: this.code.value,
-            email: this.email.value
-        };
-
-        emailjs.send("service_jgg4chq", "template_u1e5gjf", formData)
-            .then(function(response) {
-                alert("E-mail envoyé avec succès !");
-                console.log("Succès :", response);
-            }, function(error) {
-                alert("Erreur lors de l'envoi de l'e-mail.");
-                console.log("Erreur :", error);
-            });
-    });
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                emailjs.sendForm('TON_SERVICE_ID', 'TON_TEMPLATE_ID', this)
+                    .then(function() {
+                        alert("E-mail envoyé !");
+                    }, function(error) {
+                        alert("Erreur : " + JSON.stringify(error));
 </script>
 
 </body>
