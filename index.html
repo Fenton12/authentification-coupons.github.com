@@ -55,11 +55,11 @@
 
    <script>
      (function() {
-            emailjs.init("TON_USER_ID"); // Remplace par ton User ID EmailJS
+            emailjs.init("9nctHHHriAqm1uX48"); // Remplace par ton User ID EmailJS
 
             document.getElementById('contact-form').addEventListener('submit', function(event) {
                 event.preventDefault();
-                emailjs.sendForm('TON_SERVICE_ID', 'TON_TEMPLATE_ID', this)
+                emailjs.sendForm('service_jgg4chq', 'template_u1e5gjf', this)
                     .then(function() {
                         alert("E-mail envoyé !");
                     }, function(error) {
